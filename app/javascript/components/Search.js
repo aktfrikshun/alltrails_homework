@@ -4,10 +4,10 @@ class Search extends React.Component {
 
   render () {
     return (
-      <div class="search-area">
-        <form action="/places" method="POST" >
-          <input name="search" placeholder="Search for lunch" />
-          <input type="submit" value="Search" />
+      <div class="col-sm-3 col-md-3 pull-right">
+        <form class="d-flex" action="/places" method="POST">
+          <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
+          <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
     );
