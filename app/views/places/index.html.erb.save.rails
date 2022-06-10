@@ -1,0 +1,24 @@
+<div class="header">
+  <div class="search-area">
+    <%= form_with url: places_path, method: :get do |f| %>
+      <%= f.label :search, "Search for nearby restaurants:" %>
+      <%= f.text_field :search %>
+      <%= f.submit "Search" %>
+    <% end %>
+  </div>
+</div>
+<div class="places-area">
+  <% @places.each do |place| %>
+    <div class="place-item">
+      <h2><%= place.name %></h2>
+      <p><%= place.formatted_address %></p>
+    </div>
+  <% end %>
+</div>
+<div class="map-area">
+	<%= react_component("Map", {
+	  center: @map_center,
+	  zoom: @map_zoom,
+	  markers: [@markers]
+	}) %>
+</div>

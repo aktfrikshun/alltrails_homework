@@ -1,0 +1,26 @@
+// Place all the styles related to the places controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.header {
+  width: 100%;
+}
+.search-area {
+  float: right;
+}
+.places-area {
+  width: 25vw;
+  max-width: 25vw;
+	float: left;
+}
+.place-item {
+  background: #FFFFFF;
+  border: 2px solid black;
+  border-radius: 14px;
+  box-shadow: 2px;
+  margin: 10px;
+  padding: 10px;
+}
+.map-area {
+  float: left;
+  padding-left: 25px;
+}
