@@ -15,11 +15,9 @@ ActiveRecord::Schema.define(version: 2022_06_08_115629) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "places", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.float "latitude"
-    t.float "longitude"
+  create_table "favorite_places", force: :cascade do |t|
+    t.string "user_id"
+    t.string "place_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,11 +1,8 @@
 class CreatePlaces < ActiveRecord::Migration[6.1]
   def change
-    create_table :places do |t|
-      t.string :name
-      t.string :address
-      t.float :latitude
-      t.float :longitude
-
+    create_table :favorite_places do |t|
+      t.string :user_id
+      t.string :place_id
       t.timestamps
     end
   end
