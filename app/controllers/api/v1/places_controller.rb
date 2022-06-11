@@ -27,13 +27,14 @@ module Api
             rating: place.rating,
             price_level: place.price_level,
             photo_url: place_photo_url(place),
-            is_favorite: favorite_places.detect { |fp| fp.place_id == place.place_id }
+            is_favorite: favorite_places.any? { |fp| fp.place_id == place.place_id }
           }
         end
       end
 
       def place_photo_url(place)
-        return "" if place.nil? || place.photos.empty?
+        return '' if place.nil? || place.photos.empty?
+
         "https://maps.googleapis.com/maps/api/place/photo?photo_reference=#{place.photos[0].photo_reference}&maxheight=75&key=#{ENV['GMAPS_API_KEY']}"
       end
 
