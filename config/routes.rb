@@ -4,7 +4,12 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :places, only: %i[index create destroy]
+      resources :places, only: %i[index]
+      resources :favorites do
+        collection do
+          get "toggle", to: "favorites#toggle", as: :toggle
+        end
+      end
     end
   end
 end

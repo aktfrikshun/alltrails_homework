@@ -6,6 +6,6 @@ class PlacesController < ApplicationController
   end
 
   def create
-    redirect_to :action => :index, :search => params[:search]
+    redirect_to action: :index, search: params[:search]
   end
 end

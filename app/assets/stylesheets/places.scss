@@ -1,6 +1,9 @@
 // Place all the styles related to the places controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.navbar {
+  margin-top: 25px;
+}
 .header {
   width: 100%;
 }
@@ -11,6 +14,7 @@
   width: 25vw;
   max-width: 25vw;
 	float: left;
+  margin-left: 25px;
 }
 .place-item {
   background: #FFFFFF;
@@ -20,23 +24,28 @@
   margin: 10px;
   padding: 10px;
 }
+.place-name {
+  margin-bottom: 10px;
+}
+.place-image {
+  text-align: center;
+}
 .map-area {
   float: left;
   padding-left: 25px;
-}
-.place-icon {
-  width: 50px;
-  height: 50px;
-}
-.place-image {
-  float: left;
-}
-.place-details {
-  float: left;
 }
 .fa-heart {
   color: red;
 }
 .favorite {
   float: right;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .places-area {
+    width: 90vw;
+    max-width: 90vw;
+    float: left;
+  }
 }

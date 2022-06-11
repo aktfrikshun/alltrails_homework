@@ -1,54 +1,79 @@
-class Api::V1::PlacesController < Api::V1::BaseController
-  def index
-    @client = GooglePlaces::Client.new(ENV["GMAPS_API_KEY"])
-    @places = @client.spots_by_query(params[:search], :types => ['restaurant', 'food'])
-    @markers = @places.map do |place|
-      {
-        id: place.id,
-        lat: place.lat,
-        lng: place.lng,
-        name: place.name,
-        address: place.formatted_address
-      }
-    end
+# frozen_string_literal: true
 
-    if @places.count.zero?
-      @map_center = [35.6762, 139.6503] # Tokyo
-      @map_zoom = 0
-    elsif @places.count == 1
-      @map_center = [@places[0].lat, @places[0].lng]
-      @map_zoom = 14
-    else
-      avg_lat = 0
-      avg_lon = 0
-
-      @places.map do |place|
-        avg_lat += place.lat
-        avg_lon += place.lng
+module Api
+  module V1
+    class PlacesController < Api::V1::BaseController
+      def index
+        client = GooglePlaces::Client.new(ENV['GMAPS_API_KEY'])
+        places = client.spots_by_query(params[:search], types: %w[restaurant food])
+        map_state = MapState.new
+        map_state.places = map_places(places)
+        map_state.markers = map_markers(places)
+        map_state.center = map_center(places)
+        map_state.zoom = map_zoom(places.count)
+        respond_with map_state
       end
 
-      @map_center = [(avg_lat / @places.count), (avg_lon / @places.count)]
-      @map_zoom = 12
+      private
+
+      def map_places(places)
+        favorite_places = FavoritePlace.where(user_id: user_id)
+        places.map do |place|
+          {
+            id: place.id,
+            place_id: place.place_id,
+            name: place.name,
+            address: place.formatted_address,
+            rating: place.rating,
+            price_level: place.price_level,
+            photo_url: place_photo_url(place),
+            is_favorite: favorite_places.detect { |fp| fp.place_id == place.place_id }
+          }
+        end
+      end
+
+      def place_photo_url(place)
+        return "" if place.nil? || place.photos.empty?
+        "https://maps.googleapis.com/maps/api/place/photo?photo_reference=#{place.photos[0].photo_reference}&maxheight=75&key=#{ENV['GMAPS_API_KEY']}"
+      end
+
+      def map_markers(places)
+        places.map do |place|
+          {
+            id: place.id,
+            lat: place.lat,
+            lng: place.lng,
+            name: place.name,
+            address: place.formatted_address
+          }
+        end
+      end
+
+      def map_zoom(count)
+        if count.zero?
+          0
+        elsif count == 1
+          14
+        else
+          12
+        end
+      end
+
+      def map_center(places)
+        if places.count.zero?
+          [35.6762, 139.6503] # Tokyo
+        elsif places.count == 1
+          [places[0].lat, places[0].lng]
+        else
+          avg_lat = 0
+          avg_lon = 0
+          places.map do |place|
+            avg_lat += place.lat
+            avg_lon += place.lng
+          end
+          [(avg_lat / places.count), (avg_lon / places.count)]
+        end
+      end
     end
-    map_state = MapState.new
-    map_state.places = @places
-    map_state.markers = @markers
-    map_state.center = @map_center
-    map_state.zoom = @map_zoom
-    respond_with map_state
-  end
-
-  def create
-    respond_with :api, :v1, FavoritePlace.create(item_params)
-  end
-
-  def destroy
-    respond_with FavoritePlace.destroy(params[:id])
-  end
-
-  private
-
-  def place_params
-    params.require(:place).permit(:id, :name)
   end
 end
