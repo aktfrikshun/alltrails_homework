@@ -129,7 +129,7 @@ An array of places
 		"address": "800 W Williams St Suite #100, Apex, NC 27502, United States",
 		"rating": 4.5,
 		"price_level": 2,
-		"photo_url": "https://maps.googleapis.com/maps/api/place/photo?photo_reference=Aap_uEBqmSPb_FDERFlXfOstW1XZYw18mhXCQWU93VTltVXbsTI0AEMtw34zhoijvAbFA_aYOaR1bdiC2bmiVfbt0fvutCFmdXK2l1Y3Irg5WgJ4ete8Jt8awvoJjTBgs5Qocd-R3JVe0MuJoW5EVhOJr2wEWGQHhFdnAveFLmapAZ_1gADp&maxheight=75&key=AIzaSyDiBuH9HP7yISpI7LHoHAWMxb8yACHnGCo",
+		"photo_url": "https://maps.googleapis.com/maps/api/place/photo?photo_reference=Aap_uEBqmSPb_FDERFlXfOstW1XZYw18mhXCQWU93VTltVXbsTI0AEMtw34zhoijvAbFA_aYOaR1bdiC2bmiVfbt0fvutCFmdXK2l1Y3Irg5WgJ4ete8Jt8awvoJjTBgs5Qocd-R3JVe0MuJoW5EVhOJr2wEWGQHhFdnAveFLmapAZ_1gADp&maxheight=75",
 		"is_favorite": false
 	},
 ```
