@@ -16,26 +16,27 @@ AllTrails Homework Solution
 - API allows for input of a Search parameter to filter results
 - API provided to toggle (add/remove) a user favorited place
 
-### CLient
+### Client
 
-- Landing page is an rails view template which serves up a Main react component utilizing the rails_react gem
+- Landing page is a rails view template which serves up a Main react component utilizing the rails_react gem
 - The Main react component is made of of subcomponents
--- Header ( App Title and Search Box )
--- Body
----- Places ( List of nearby Places)
-------Place ( Place Details)
----- Map ( The Google Map )
+** Header ( App Title and Search Box )
+*** Body
+**** Places ( List of nearby Places)
+***** Place ( Place Details)
+**** Map ( The Google Map )
 - The Map is rendered with a marker representing each place result
 - Clicking on a map marker will display place detail
 
 ## Project Notes
 
-### What I would do if I had more time to make this applicaton more production ready
+### What I would do if I had additional time to make this applicaton more production ready
 
 - Add UserAuthentication with Devise to manage users via SSO/OAUTH
 - Add API permissions using something like pundit
 - Add localization support for both the API can client
 - Build deployment env and and CI/CD actions
+- Implement a Docker or Kubernetes based container for development, testing and deployment
 - Make the front end more SPA like with update management between components
 - Take a class in Front End Design with React so that the UI is more responsive and looks more like the provided Graphical Artifacts
 - Jasper specs for React front end
@@ -48,8 +49,6 @@ AllTrails Homework Solution
 ```
 GMAPS_API_KEY=
 ```
-
-2. Setup your development environment. There are two options. Using Docker or a doing a local installation on Ubuntu.
 
 ### Local installation
 The following are instructions for installing AllTrails_Homework on your local machine.  Consider using a ruby version manager like [rvm]
@@ -157,7 +156,7 @@ And map geometry details
 "zoom": 12
 ```
 
-Peform a search ( simply pass in a "search" to the same API endpoint as above)
+Peform a search ( simply pass in a "search" parameter to the same API endpoint as above)
 ```console
 $ curl -H "Content-Type: application/json" -X GET --data '{"search":"Sushi"}' http://localhost:3000/api/v1/places
 ```
