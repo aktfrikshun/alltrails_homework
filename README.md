@@ -21,10 +21,10 @@ AllTrails Homework Solution
 - Landing page is a rails view template which serves up a Main react component utilizing the rails_react gem
 - The Main react component is made of of subcomponents
     * Header ( App Title and Search Box )
-        - Body
-            * Places ( List of nearby Places)
-                - Place ( Place Details)
-            * Map ( The Google Map )
+    * Body
+        * Places ( List of nearby Places)
+            - Place ( Place Details)
+        * Map ( The Google Map )
 - The Map is rendered with a marker representing each place result
 - Clicking on a map marker will display place detail
 
