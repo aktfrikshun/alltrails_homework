@@ -2,6 +2,8 @@
 
 AllTrails Homework Solution
 
+<img width="544" alt="Screen Shot 2022-06-11 at 9 44 39 AM" src="https://user-images.githubusercontent.com/1626505/173244254-db7dfd9f-6202-4bb2-be04-ca2e7a918635.png">
+
 ## Technical Details:
 
 - Ruby 2.7.3
