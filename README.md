@@ -2,8 +2,6 @@
 
 AllTrails Homework Solution
 
-<img width="544" alt="Screen Shot 2022-06-11 at 9 44 39 AM" src="https://user-images.githubusercontent.com/1626505/173244254-db7dfd9f-6202-4bb2-be04-ca2e7a918635.png">
-
 ## Technical Details:
 
 - Ruby 2.7.3
@@ -173,7 +171,18 @@ $ curl -H "Content-Type: application/json" -X GET --data '{"place_id":"123"}' ht
   "created_at": "2022-06-12T16:21:30.359Z",
   "updated_at": "2022-06-12T16:21:30.359Z"
 }
-
 ```
+
+## Screen shots
+
+### Desktop
+
+<img width="1410" alt="Screen Shot 2022-06-11 at 9 43 05 AM" src="https://user-images.githubusercontent.com/1626505/173244334-cba3a450-9223-41d9-9223-17739e711d43.png">
+
+### Mobile
+
+<img width="544" alt="Screen Shot 2022-06-11 at 9 44 39 AM" src="https://user-images.githubusercontent.com/1626505/173244254-db7dfd9f-6202-4bb2-be04-ca2e7a918635.png">
+
+
 
 
